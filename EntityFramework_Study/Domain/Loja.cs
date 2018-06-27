@@ -11,6 +11,11 @@ namespace Domain
     [Table("Loja")]
     public class Loja
     {
+        public Loja()
+        {
+            Produtos = new List<Produto>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -24,5 +29,7 @@ namespace Domain
         [Required]
         [MaxLength(15)]
         public string CNPJ { get; set; }
+
+        public virtual List<Produto> Produtos { get; set; }
     }
 }
