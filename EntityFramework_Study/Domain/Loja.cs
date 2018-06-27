@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    [Table("Produto")]
-    public class Produto
+    [Table("Loja")]
+    public class Loja
     {
-        [Key] // Não seria necessário incluir, o EF identifica a propriedade Id e seta como Chave Primária
+        [Key]
         public int Id { get; set; }
 
-        [MaxLength(200)]
         [Required]
+        [MaxLength(200)]
         public string Nome { get; set; }
 
-        [MaxLength(2000)] 
+        [MaxLength(200)]
         public string Descricao { get; set; }
 
-        [Range(double.MinValue, 9999999999.999)]
         [Required]
-        public decimal Valor { get; set; }
+        [MaxLength(15)]
+        public string CNPJ { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace Data
             Database.SetInitializer<ProductDbContext>(
                 new CreateDatabaseIfNotExists<ProductDbContext>());
         }
+
+        public DbSet<Produto> Produtos {get;set;}
+        public DbSet<Loja> Lojas { get; set; }
+
     }
 }
