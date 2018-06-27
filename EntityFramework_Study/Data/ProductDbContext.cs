@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,11 +10,16 @@ namespace Data
 {
     public class ProductDbContext : DbContext
     {
-        protected ProductDbContext() : base("Name=ProductDb")
+        public  ProductDbContext() : base("Name=ProductDb")
         {
             // Cria a base de dados (ProductDb) caso não exista. Os parâmetros de configuração da base estão no app.config.
             Database.SetInitializer<ProductDbContext>(
                 new CreateDatabaseIfNotExists<ProductDbContext>());
+            Database.Initialize(false); // Valor falso para o inicializador ser executado apenas caso não tenha sido executado dentro do DbContext.
         }
+
+        public DbSet<Produto> Produtos {get;set;}
+        public DbSet<Loja> Lojas { get; set; }
+
     }
 }
