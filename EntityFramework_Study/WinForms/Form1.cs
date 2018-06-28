@@ -75,5 +75,13 @@ namespace WinForms
 
             var nro = produtosComA.Count();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var produtoUp = context.Produtos.Find(100) ?? new Produto();
+
+            produtoUp.Nome = "Novo Nome - Update";
+            context.SaveChanges();
+        }
     }
 }
