@@ -43,5 +43,37 @@ namespace WinForms
 
             context.SaveChanges();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var loja = context.Lojas.Find(1);
+
+            var produto = new Produto
+            {
+                Nome = "Novo Produto ",
+                LojaId = loja?.Id ?? 0,
+                Loja = loja
+            };
+
+            context.Produtos.Add(produto);
+            context.SaveChanges();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var produto = context.Produtos.Find(2);
+
+            var lojaProduto = produto.Loja;
+            var nomeLoja = produto.Loja.Nome;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            IEnumerable<Produto> produtosComA =
+                context.Produtos.Where(x => x.Nome.StartsWith("A"));
+
+            var nro = produtosComA.Count();
+        }
     }
 }
