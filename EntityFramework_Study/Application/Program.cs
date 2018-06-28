@@ -11,7 +11,9 @@ namespace Application
     {
         static void Main(string[] args)
         {
-            ProductDbContext context = new ProductDbContext();
+            var context = new ProductDbContext();
+
+            Console.ReadKey();
         }
     }
 }
