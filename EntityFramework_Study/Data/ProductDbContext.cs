@@ -16,6 +16,9 @@ namespace Data
             Database.SetInitializer<ProductDbContext>(
                 new CreateDatabaseIfNotExists<ProductDbContext>());
             Database.Initialize(false); // Valor falso para o inicializador ser executado apenas caso não tenha sido executado dentro do DbContext.
+
+            // Usado apenas para análise das Querys geradas pelo EF.
+            Database.Log = d => System.Diagnostics.Debug.WriteLine(d);
         }
 
         public DbSet<Produto> Produtos {get;set;}
